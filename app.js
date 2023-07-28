@@ -26,18 +26,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
   secret: 'gonza33',
-  cookie:{maxAge:null},
-  resave:false,
-  saveUnitialized:true
+  cookie:{ maxAge:null},
+  resave: false,
+  saveUninitialized: true,
 }))
 
-secured= async (req,res,next)=>{
+secured= async(req,res,next)=>{
   try{
     console.log(req.session.id_usuario);
     if(req.session.id_usuario) {
       next();
     }else{
-      res.redirect(/admin/login);
+      res.redirect('/admin/login');
     }
   } catch (error) {console.log (error);
   }
@@ -46,7 +46,7 @@ secured= async (req,res,next)=>{
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use ('/admin/login', loginRouter);
-app.use('/admin/home',adminRouter);
+app.use('/admin/home', secured, adminRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

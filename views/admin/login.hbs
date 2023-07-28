@@ -1,12 +1,12 @@
-<form>
+<form action="/admin/login" method="post">
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Usuario</label>
-    <input type="text" class="form-control" id="imputUser" >
+    <label for="exampleInputText1" class="form-label">Usuario</label>
+    <input type="text" class="form-control" id="imputUser" name="usuario">
    
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
   </div>
   <div class="mb-3 form-check">
     
@@ -16,5 +16,5 @@
   <button style="background: rgb(41, 187, 123)" type="submit" class="btn btn-primary">Ingresar</button>
 </form>
 {{#if error}}
-<P>Usuario y/o Contraseña incorrectos.</P>
+<P style="color: aliceblue;">Usuario y/o Contraseña incorrectos.</P>
 {{/if }}
