@@ -1,11 +1,15 @@
 var express = require('express');
 var router = express.Router();
-
+var lenguajesModel= require('../../models/lenguajesModel');
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
+
+var lenguajes = await lenguajesModel.getLenguajes();
+
   res.render('admin/novedades', 
   {layout:'admin/layout',
-   persona: req.session.nombre
+   usuario: req.session.nombre,
+   lenguajes
 });
 });
 module.exports=router;
